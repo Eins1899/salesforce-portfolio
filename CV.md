@@ -7,6 +7,7 @@
 -->
 
 ## Admin
+Designed and documented a monthly user licence hygiene process using SOQL and Salesforce Inspector to identify inactive users, routing findings to stakeholders for sign-off before bulk deactivation via CSV upload.
 - Implemented OwnBackup across Salesforce environments,
   configuring data and metadata backup services, defining
   a naming convention for backup jobs, and producing a
