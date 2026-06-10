@@ -1,0 +1,19 @@
+# Salesforce DX
+.sfdx/
+.sf/
+*.dup
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/settings.json
+*.swp
+*.swo
+
+# Sensitive — never commit these
+*credentials*
+*password*
+*secret*
+*.env
