@@ -1,0 +1,18 @@
+-- Users who have never logged into Salesforce
+-- NULL LastLoginDate does not appear in date comparison queries
+-- Must be run separately and reviewed carefully (may include new starters)
+
+SELECT
+  Id,
+  FirstName,
+  LastName,
+  Username,
+  Email,
+  Profile.Name,
+  CreatedDate,
+  IsActive
+FROM User
+WHERE IsActive = true
+AND LastLoginDate = null
+AND Profile.Name != 'Chatter Free User'
+ORDER BY CreatedDate ASC

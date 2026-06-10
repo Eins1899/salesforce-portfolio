@@ -1,0 +1,20 @@
+-- Users active in Salesforce but not logged in for 30+ days
+-- Run in production org via Salesforce Inspector
+-- Export as CSV for stakeholder review
+
+SELECT
+  Id,
+  FirstName,
+  LastName,
+  Username,
+  Email,
+  Profile.Name,
+  UserRole.Name,
+  LastLoginDate,
+  CreatedDate,
+  IsActive
+FROM User
+WHERE IsActive = true
+AND LastLoginDate < LAST_N_DAYS:30
+AND Profile.Name != 'Chatter Free User'
+ORDER BY LastLoginDate ASC NULLS LAST
