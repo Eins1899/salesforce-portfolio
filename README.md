@@ -1,4 +1,4 @@
-# [Your Name] — Salesforce Administrator
+# Einstein Amazu — Salesforce Administrator
 
 ![Salesforce Administrator](https://img.shields.io/badge/Salesforce-Administrator-00A1E0?style=flat&logo=salesforce&logoColor=white)
 ![Experience](https://img.shields.io/badge/Experience-1--2%20Years-lightgrey?style=flat)
