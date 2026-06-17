@@ -3,7 +3,7 @@
 ![Type: Admin](https://img.shields.io/badge/Type-Admin-green)
 ![Status: In Progress](https://img.shields.io/badge/Status-In%20Progress-orange)
 ![Tool: OwnBackup](https://img.shields.io/badge/Tool-OwnBackup-00A1E0?style=flat)
-![Year: 2025](https://img.shields.io/badge/Year-2025-blue)
+![Year: 2025](https://img.shields.io/badge/Year-2026-blue)
 
 ## The problem
 
