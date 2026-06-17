@@ -91,6 +91,39 @@ During initial setup, the sandbox environment was not appearing in OwnBackup's a
 - `docs/backup-policy.md` — backup policy document (anonymised, to be added on sign-off)
 - `docs/support-ticket.md` — anonymised support ticket raised with OwnBackup (to be added post-resolution)
 
----
+# OWN Backup & Archive Implementation
+
+## Overview
+This project documents the implementation of OWN 
+(Own from Salesforce) Backup and Archive at 
+RAM Tracking, covering setup, configuration, 
+and ongoing management.
+
+## Project Status
+- Backup: ✅ Live in Production since April 2022
+- Archive: ✅ Configured and tested in Sandbox
+- Archive Production rollout: ⏳ Pending approval
+
+## Key Stats (June 2026)
+- Records backed up: 287,973,220
+- Data size: 361.83 GB
+- Files backed up: 2,554,827
+- Data storage usage: 246% of limit
+
+## Documentation
+| Document | Description |
+|---|---|
+| naming-convention.md | OWN service naming standards |
+| authenticated-user-setup.md | Dedicated integration user setup |
+| sandbox-setup.md | Full Sandbox archive configuration |
+| archive-policy-notes.md | Archive candidates and policy notes |
+
+## Related
+- Salesforce Data Archiving Policy — SharePoint
+- Personal Development Plan — SharePoint
+
+## Author
+Einstein Amazu — Salesforce Administrator
+RAM Tracking — June 2026
 
 *This project is ongoing. README will be updated as the implementation progresses and the support issue is resolved.*
