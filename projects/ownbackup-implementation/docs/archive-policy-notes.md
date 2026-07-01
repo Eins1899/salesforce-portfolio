@@ -96,3 +96,74 @@ break relationships on unarchiving.
 - Created by: Einstein Amazu
 - Status: Sandbox tested — awaiting 
   Production rollout approval
+
+
+  ## Archive Policies Created — June 2026
+
+### Policy 1 — Archive Completed Tasks 2Y+
+| Setting | Value |
+|---|---|
+| **Object** | Tasks__c |
+| **Query** | Status__c = Completed AND CreatedDate < 2 years |
+| **Schedule** | Daily 02:00 AM UTC |
+| **Limit** | 10,000 per run |
+| **Retention** | 3 years |
+| **Protection** | 90 days |
+| **Child Objects** | None |
+| **Environment** | Full Sandbox (FullSB) |
+| **Status** | ✅ Created and running |
+
+### Policy 2 — Archive Cancelled Orders 2Y+
+| Setting | Value |
+|---|---|
+| **Object** | Order__c |
+| **Query** | Order_Status__c IN (Cancelled statuses) AND CreatedDate < 2 years |
+| **Schedule** | Daily 02:00 AM UTC |
+| **Limit** | 10,000 per run |
+| **Retention** | 3 years |
+| **Protection** | 90 days |
+| **Child Objects** | Order_Contract__c (via Order__c lookup) |
+| **Environment** | Full Sandbox (FullSB) |
+| **Status** | ✅ Created — awaiting manager sign-off for Production |
+
+### Policy 3 — Archive Cancelled Engineer Bookings 2Y+
+| Setting | Value |
+|---|---|
+| **Object** | Service_Booking__c (Engineer Booking in OWN) |
+| **Query** | Marked_as_Cancelled_Date__c != null AND CreatedDate < 2 years |
+| **Schedule** | Daily 02:00 AM UTC |
+| **Limit** | 10,000 per run |
+| **Retention** | 3 years |
+| **Protection** | 90 days |
+| **Child Objects** | None (Invoice_Service_Booking__c field deprecated) |
+| **Environment** | Full Sandbox (FullSB) |
+| **Status** | ✅ Created — awaiting manager sign-off for Production |
+
+## Key Technical Discoveries
+
+| Discovery | Detail |
+|---|---|
+| Tasks__c vs Task | RAM Tracking uses custom Tasks__c not standard Task object |
+| Service_Booking__c | Displays as "Engineer Booking" in OWN Archive dropdown |
+| FinancialForce objects | fferpcore, ffbc, c2g, ffrr, ffct namespaces — need FF sign-off before archiving |
+| Invoice_Service_Booking__c | Junction object — Service Booking field deprecated (_del suffix) |
+| Manual query mode | Required for date filters in OWN — LIMIT must be included in SOQL |
+| Order_Contract__c | Child of Order__c — 51,027 records — archive together with orders |
+
+## Policies Pending Sign-Off
+
+| Policy | Object | Blocker |
+|---|---|---|
+| Completed Orders | Order__c | Manager sign-off needed |
+| Invoiced Orders | Order__c | Finance confirmation needed |
+| FinancialForce Objects | fferpcore/ffbc/c2g | FF support sign-off needed |
+| Engineer Booking Completed | Service_Booking__c | Manager sign-off needed |
+
+## Storage Impact Estimate (Sandbox)
+
+| Policy | Eligible Records |
+|---|---|
+| Tasks | 223 (Sandbox) / millions (Production) |
+| Cancelled Orders | 29,318 |
+| Cancelled Engineer Bookings | 9,933 |
+| **Total so far** | **~39,474** |
